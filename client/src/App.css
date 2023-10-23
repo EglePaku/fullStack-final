@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Wix Madefor Display', sans-serif;
+  font-weight: 400;
+}
+
+/* Typo */
+
+h1 {
+  font-family: "DM Serif Display", serif;
+  font-size: 3.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%; 
+}
+
+h2 {
+    font-family: "DM Serif Display", serif;
+
+    font-size: 2.1875rem;
+}
+
+p {
+    color: rgba(0, 0, 0, 0.70);
+}
+
+.logo {
+    font-size: 2rem;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+aside {
+  background-color: #333;
+  color: #fff;
+  width: 35vw;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  padding-top: 2rem;
+}
+
+.aside-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #000;
+  background-image: url(./assets/bg-aside.png);
+  background-size: cover;
+  background-position: bottom center;
+}
+
+.aside-wrap h1 {
+    text-align: center;
+}
+.start {
+  padding: 0 20px;
+}
+.center {
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+main {
+  flex: 1;
+  margin-left: 35vw;
+}
+
+.header {
+  display: block;
+  height: 100px;
+  background-color: #fff;
+  position: fixed;
+  padding: 20px 100px;
+  width: 100%;
+  /* border-bottom: 1px #eee solid; */
+}
+
+.content-wrap {
+  padding: 20px 100px;
+  margin-top: 180px;
+}
+
+.list-item {
+  /* height: 100px; */
+  background-color: #eee;
+  margin-bottom: 30px;
+  display: block;
+  padding: 8px 30px;
+}
+
+.list-item-content p {
+    /* line-clamp: 2; */
+}
+
+.form-wrap {
+  margin-bottom: 10rem;
+}
+
+.custom-form {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.custom-form input {
+  display: flex;
+}
+
+.placeholder-invisible {
+  opacity: 0;
+}
+
+input {
+  padding: 1rem;
+  display: block;
+  width: 100%;
+  max-width: calc(100% - 2rem);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: none;
+  font-family: 'Wix Madefor Display', sans-serif;
+  font-weight: 400;
+}
+
+/* Button */
+button {
+  height: 50px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  font-family: 'Wix Madefor Display', sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  background: #70FF98;
+  cursor: pointer;
+}
