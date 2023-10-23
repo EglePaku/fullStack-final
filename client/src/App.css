@@ -75,14 +75,14 @@ main {
   height: 100px;
   background-color: #fff;
   position: fixed;
-  padding: 20px 100px;
+  padding: 20px 70px;
   width: 100%;
-  /* border-bottom: 1px #eee solid; */
+  border-bottom: 1px #eee solid;
 }
 
 .content-wrap {
-  padding: 20px 100px;
-  margin-top: 180px;
+  padding: 20px 70px;
+  margin-top: 150px;
 }
 
 .list-item {
@@ -90,11 +90,15 @@ main {
   background-color: #eee;
   margin-bottom: 30px;
   display: block;
-  padding: 8px 30px;
+  /* padding: 8px 30px; */
 }
 
 .list-item-content p {
-    /* line-clamp: 2; */
+/* padding: .5rem 2rem; */
+}
+
+.list-item-content {
+    padding: .5rem 2rem; 
 }
 
 .form-wrap {
@@ -144,4 +148,25 @@ button {
   font-size: 0.9375rem;
   background: #70FF98;
   cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+
+.delete {
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-block;
+    transition: ease-in-out .2s all;
+}
+
+.delete:hover {
+    opacity: .7;
+}
+
+.user-actions {
+    border-top: 1px solid #00000010;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 }

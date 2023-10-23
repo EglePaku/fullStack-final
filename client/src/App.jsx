@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Formik, Form, Field } from "formik";
 import "./App.css";
@@ -17,6 +17,19 @@ const App = () => {
         console.error(error);
       });
   }, []);
+
+  const handleDeleteCar = (carId) => {
+    axios
+      .delete(`http://localhost:3000/${carId}`)
+      .then(() => {
+        // Handle the response as needed
+        // Remove the deleted car from the UI
+        setCars((prevCars) => prevCars.filter((car) => car._id !== carId));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <div className="wrapper">
@@ -61,6 +74,14 @@ const App = () => {
                 <div className="list-item-content">
                   <h3>{car.brand}</h3>
                   <p>{car.model}</p>
+                </div>
+                <div className="user-actions">
+                  <div
+                    className="delete"
+                    onClick={() => handleDeleteCar(car._id)}
+                  >
+                    Ištrinti
+                  </div>
                 </div>
               </div>
             ))}

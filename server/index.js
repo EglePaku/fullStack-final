@@ -23,6 +23,30 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const con = await client.connect();
+    const query = { _id: new ObjectId(id) };
+    const result = await con
+      .db("demo1")
+      .collection("cars")
+      .deleteOne(query);
+    await con.close();
+
+    if (result.deletedCount === 0) {
+      return res.status(404).send({ error: "Car not found" });
+    }
+
+    res.send({ message: "Car deleted successfully" });
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+});
+
+
+
+
 // Get All bmw cars
 app.get("/bmw", async (req, res) => {
   try {
