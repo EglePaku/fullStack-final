@@ -26,7 +26,7 @@ p {
 }
 
 .logo {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .wrapper {
@@ -41,7 +41,7 @@ aside {
   position: fixed;
   height: 100%;
   overflow: auto;
-  padding-top: 2rem;
+  padding-top: 1.3rem;
 }
 
 .aside-wrap {
@@ -82,7 +82,7 @@ main {
 
 .content-wrap {
   padding: 20px 70px;
-  margin-top: 150px;
+  margin-top: 170px;
 }
 
 .list-item {
@@ -93,9 +93,6 @@ main {
   /* padding: 8px 30px; */
 }
 
-.list-item-content p {
-/* padding: .5rem 2rem; */
-}
 
 .list-item-content {
     padding: .5rem 2rem; 
