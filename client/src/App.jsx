@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Formik, Form, Field } from "formik";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 const App = () => {
@@ -25,9 +27,14 @@ const App = () => {
         // Handle the response as needed
         // Remove the deleted car from the UI
         setCars((prevCars) => prevCars.filter((car) => car._id !== carId));
+
+        // Show a success notification for deletion
+        toast.success("Įrašas sėkmingai ištrintas");
       })
       .catch((error) => {
         console.error(error);
+        // Show an error notification
+        toast.error("Įvyko klaida, perkraukite puslapį");
       });
   };
 
@@ -36,26 +43,33 @@ const App = () => {
       <aside className="aside-wrap">
         <Formik
           initialValues={{ brand: "", model: "" }}
-          onSubmit={(values) => {
+          onSubmit={(values, { resetForm }) => {
             const newCar = values;
             axios
               .post("http://localhost:3000/", newCar)
               .then(() => {
-                setCars((prevCars) => [...prevCars, newCar]);
+                // Add the new car to the beginning of the list
+                setCars((prevCars) => [newCar, ...prevCars]);
+
+                // Show a success notification for form submission
+                toast.success("Įrašas sėkmingai pateiktas");
+
+                resetForm();
               })
               .catch((error) => {
                 console.error(error);
+                // Show an error notification for form submission
+                toast.error("Nepavyko pateikti įrašo.");
               });
           }}
         >
-          {/* add styles */}
           <Form className="custom-form">
             <h1 className="logo">Quipsa</h1>
             <div className="form-wrap">
               <h1>Nori užduoti klausimą?</h1>
               <Field name="brand" placeholder="Tavo klausimas..." />
               <Field name="model" placeholder="Aprašymas..." />
-              <button type="submit">Užduoti naują klausimą</button>
+              <button className="btn" type="submit">Užduoti naują klausimą</button>
             </div>
             <span className="placeholder-invisible"></span>
           </Form>
@@ -66,7 +80,6 @@ const App = () => {
         <div className="header">
           <h2>Mano klausimai</h2>
         </div>
-
         <div className="content-wrap">
           <div className="list">
             {cars.map((car) => (
@@ -75,6 +88,7 @@ const App = () => {
                   <h3>{car.brand}</h3>
                   <p>{car.model}</p>
                 </div>
+                {/* User actions */}
                 <div className="user-actions">
                   <div className="wrap-start">
                     <div className="cbutton">
@@ -107,6 +121,7 @@ const App = () => {
           </div>
         </div>
       </main>
+      <ToastContainer />
     </div>
   );
 };

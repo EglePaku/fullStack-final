@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Wix Madefor Display', sans-serif;
+  font-family: "Wix Madefor Display", sans-serif;
   font-weight: 400;
 }
 
@@ -12,21 +12,23 @@ h1 {
   font-size: 3.125rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 100%; 
+  line-height: 100%;
 }
 
 h2 {
-    font-family: "DM Serif Display", serif;
+  font-family: "DM Serif Display", serif;
 
-    font-size: 2.1875rem;
+  font-size: 2.1875rem;
 }
 
 p {
-    color: rgba(0, 0, 0, 0.70);
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 130%;
+  font-size: 15px;
 }
 
 .logo {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 
 .wrapper {
@@ -41,7 +43,7 @@ aside {
   position: fixed;
   height: 100%;
   overflow: auto;
-  padding-top: 1.3rem;
+  padding-top: 0.5rem;
 }
 
 .aside-wrap {
@@ -55,14 +57,7 @@ aside {
 }
 
 .aside-wrap h1 {
-    text-align: center;
-}
-.start {
-  padding: 0 20px;
-}
-.center {
-  padding: 20px;
-  margin-bottom: 50px;
+  text-align: center;
 }
 
 main {
@@ -87,20 +82,22 @@ main {
 }
 
 .list-item {
-  /* height: 100px; */
   background-color: #eee;
   margin-bottom: 30px;
   display: block;
-  /* padding: 8px 30px; */
+  transition: ease-in-out all 0.2s;
 }
 
+.list-item:hover {
+  background: rgba(112, 255, 152, 0.2);
+}
 
 .list-item-content {
-    padding: .5rem 2rem; 
+  padding: 0.5rem 2rem;
 }
 
 .form-wrap {
-  margin-bottom: 10rem;
+  margin-bottom: 8rem;
 }
 
 .custom-form {
@@ -127,36 +124,63 @@ input {
   margin-bottom: 1rem;
   font-size: 1rem;
   border: none;
-  font-family: 'Wix Madefor Display', sans-serif;
+  font-family: "Wix Madefor Display", sans-serif;
   font-weight: 400;
 }
 
 /* Button */
-button {
+.btn {
   height: 50px;
   display: flex;
-  width: 100%;
   align-items: center;
-  justify-content: center;
+
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
   outline: none;
   box-shadow: none;
   border: none;
-  font-family: 'Wix Madefor Display', sans-serif;
+  font-family: "Wix Madefor Display", sans-serif;
   font-weight: 700;
   font-size: 1rem;
-  background: #70FF98;
+  background: #70ff98;
   cursor: pointer;
   margin-bottom: 1rem;
+  position: relative;
+  transition: ease-in-out all 0.2s;
 }
 
+.btn::after {
+  display: block;
+  content: "";
+  width: 60px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #fff;
+  background-image: url(./assets/icons/btn-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: ease-in-out all 0.2s;
+}
+
+.btn:hover::after {
+  right: 10px;
+}
+
+.btn:hover {
+  background-color: #fff;
+  padding-left: 30px;
+}
 
 .cbutton {
-    font-weight: 700;
-    cursor: pointer;
-    display: inline-block;
-    transition: ease-in-out .2s all;
-    display: flex;
-    font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-block;
+  transition: ease-in-out 0.2s all;
+  display: flex;
+  font-size: 14px;
 }
 
 .cbutton img {
@@ -166,14 +190,14 @@ button {
 }
 
 .cbutton:hover {
-    opacity: .7;
+  opacity: 0.7;
 }
 
 .user-actions {
-    border-top: 1px solid #00000010;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
+  border-top: 1px solid #00000010;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .wrap-end {
@@ -183,7 +207,6 @@ button {
 .wrap-end .cbutton {
   display: flex;
   margin-left: 30px;
-
 }
 
 .wrap-start {
@@ -192,4 +215,32 @@ button {
 
 .wrap-start .cbutton {
   margin-right: 5px;
+}
+
+/* Toastify */
+
+.Toastify__toast--success {
+  background-color: #fff;
+}
+
+.Toastify__toast--success .Toastify__toast-body {
+  color: #000;
+}
+
+.Toastify__toast--error .Toastify__toast-body {
+  color: #000;
+}
+
+.Toastify__toast {
+  border-radius: 0;
+}
+
+.Toastify__toast-body {
+  font-size: 15px;
+  font-family: "Wix Madefor Display", sans-serif;
+  font-weight: 700;
+}
+
+.Toastify__toast-progress-bar {
+  background: #000;
 }
