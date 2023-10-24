@@ -87,7 +87,11 @@ main {
   transition: ease-in-out all 0.2s;
 }
 
-.list-item:hover {
+/* .list-item:hover {
+  background: rgba(112, 255, 152, 0.2);
+} */
+
+.new-list-item {
   background: rgba(112, 255, 152, 0.2);
 }
 

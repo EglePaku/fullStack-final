@@ -41,8 +41,35 @@ const App = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
+  };
+
+  const addNewCar = (newCar) => {
+    // Add the new car to the beginning of the list with the new-list-item class
+    setCars((prevCars) => [{ ...newCar, isNew: true }, ...prevCars]);
+
+    // Show a success notification for form submission
+    toast.success("Įrašas sėkmingai pateiktas");
+  };
+
+  const handleFormSubmit = (values, { resetForm }) => {
+    const newCar = values;
+    axios
+      .post("http://localhost:3000/", newCar)
+      .then(() => {
+        addNewCar(newCar);
+
+        resetForm();
+
+        // Scroll to the top of the page with smooth animation
+        scrollToTop();
+      })
+      .catch((error) => {
+        console.error(error);
+        // Show an error notification for form submission
+        toast.error("Nepavyko pateikti įrašo.");
+      });
   };
 
   return (
@@ -50,28 +77,7 @@ const App = () => {
       <aside className="aside-wrap">
         <Formik
           initialValues={{ brand: "", model: "" }}
-          onSubmit={(values, { resetForm }) => {
-            const newCar = values;
-            axios
-              .post("http://localhost:3000/", newCar)
-              .then(() => {
-                // Add the new car to the beginning of the list
-                setCars((prevCars) => [newCar, ...prevCars]);
-
-                // Show a success notification for form submission
-                toast.success("Įrašas sėkmingai pateiktas");
-
-                resetForm();
-
-                // Scroll to the top of the page with smooth animation
-                scrollToTop();
-              })
-              .catch((error) => {
-                console.error(error);
-                // Show an error notification for form submission
-                toast.error("Nepavyko pateikti įrašo.");
-              });
-          }}
+          onSubmit={handleFormSubmit}
         >
           <Form className="custom-form">
             <h1 className="logo">Quipsa</h1>
@@ -95,7 +101,10 @@ const App = () => {
         <div className="content-wrap">
           <div className="list">
             {cars.map((car) => (
-              <div key={car._id} className="list-item">
+              <div
+                key={car._id}
+                className={`list-item ${car.isNew ? "new-list-item" : ""}`}
+              >
                 <div className="list-item-content">
                   <h3>{car.brand}</h3>
                   <p>{car.model}</p>

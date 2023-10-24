@@ -44,9 +44,6 @@ app.delete("/:id", async (req, res) => {
   }
 });
 
-
-
-
 // Get All bmw cars
 app.get("/bmw", async (req, res) => {
   try {
@@ -64,56 +61,56 @@ app.get("/bmw", async (req, res) => {
 });
 
 // Get specific item by :id
-app.get("/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const con = await client.connect();
-    const data = await con
-      .db("demo1")
-      .collection("cars")
-      .find(new ObjectId(id)) // pagal id kriteriju
-      .toArray();
-    await con.close();
-    res.send(data[0]); // viena objekta
-  } catch (error) {
-    res.status(500).send({ error });
-  }
-});
+// app.get("/:id", async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const con = await client.connect();
+//     const data = await con
+//       .db("demo1")
+//       .collection("cars")
+//       .find(new ObjectId(id)) // pagal id kriteriju
+//       .toArray();
+//     await con.close();
+//     res.send(data[0]); // viena objekta
+//   } catch (error) {
+//     res.status(500).send({ error });
+//   }
+// });
 
 // Get All brand cars by dynamic :brand
-app.get("/brand/:brand", async (req, res) => {
-  try {
-    const { brand } = req.params;
-    const con = await client.connect();
-    const data = await con
-      .db("demo1")
-      .collection("cars")
-      .find({ brand })
-      .toArray();
-    await con.close();
-    res.send(data);
-  } catch (error) {
-    res.status(500).send({ error });
-  }
-});
+// app.get("/brand/:brand", async (req, res) => {
+//   try {
+//     const { brand } = req.params;
+//     const con = await client.connect();
+//     const data = await con
+//       .db("demo1")
+//       .collection("cars")
+//       .find({ brand })
+//       .toArray();
+//     await con.close();
+//     res.send(data);
+//   } catch (error) {
+//     res.status(500).send({ error });
+//   }
+// });
 
 // Get All cars sorted ascending/descending
-app.get("/sorted/:type", async (req, res) => {
-  try {
-    const { type } = req.params;
-    const con = await client.connect();
-    const data = await con
-      .db("demo1")
-      .collection("cars")
-      .find()
-      .sort({ brand: type === "asc" ? 1 : -1 })
-      .toArray();
-    await con.close();
-    res.send(data);
-  } catch (error) {
-    res.status(500).send({ error });
-  }
-});
+// app.get("/sorted/:type", async (req, res) => {
+//   try {
+//     const { type } = req.params;
+//     const con = await client.connect();
+//     const data = await con
+//       .db("demo1")
+//       .collection("cars")
+//       .find()
+//       .sort({ brand: type === "asc" ? 1 : -1 })
+//       .toArray();
+//     await con.close();
+//     res.send(data);
+//   } catch (error) {
+//     res.status(500).send({ error });
+//   }
+// });
 
 app.post("/", async (req, res) => {
   try {
