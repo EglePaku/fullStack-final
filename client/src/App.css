@@ -6,7 +6,6 @@ body {
 }
 
 /* Typo */
-
 h1 {
   font-family: "DM Serif Display", serif;
   font-size: 3.125rem;
@@ -18,6 +17,10 @@ h1 {
 h2 {
   font-family: "DM Serif Display", serif;
   font-size: 2.1875rem;
+}
+
+h3 {
+  margin-bottom: 0;
 }
 
 p {
@@ -87,12 +90,34 @@ main {
   transition: ease-in-out all 0.2s;
 }
 
+.list-item p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+          line-clamp: 3; 
+  -webkit-box-orient: vertical;
+}
+
 /* .list-item:hover {
   background: rgba(112, 255, 152, 0.2);
 } */
 
-.new-list-item {
+/* .new-list-item {
   background: rgba(112, 255, 152, 0.2);
+} */
+
+.new-list-item:first-child {
+  animation: backgroundColorChange 2s linear;
+  background-color: #eee;
+}
+
+@keyframes backgroundColorChange {
+  0% {
+    background: rgba(112, 255, 152, 0.2);
+  }
+  100% {
+    background: #eee;
+  }
 }
 
 .list-item-content {
@@ -125,10 +150,32 @@ input {
   width: 100%;
   max-width: calc(100% - 2rem);
   margin-bottom: 1rem;
-  font-size: .9rem;
+  font-size: 0.9rem;
   border: none;
   font-family: "Wix Madefor Display", sans-serif;
   font-weight: 400;
+  margin-bottom: 25px;
+}
+
+.custom-textarea {
+  max-width: calc(100% - 36px);
+  min-width: calc(100% - 36px);
+  width: 100%;
+  height: 50px;
+  max-height: 20vh;
+  min-height: 18px;
+  padding: 16px 18px 19px 18px;
+  font-size: 0.9rem;
+  border: none;
+  font-family: "Wix Madefor Display", sans-serif;
+  font-weight: 400;
+  margin-bottom: 20px;
+  line-height: 150%;
+}
+
+input:focus,
+.custom-textarea:focus {
+  outline: none;
 }
 
 /* Button */
@@ -170,10 +217,11 @@ input {
 
 .btn:hover::after {
   right: 10px;
+  background-color: #70ff98;
 }
 
 .btn:hover {
-  background-color: #fff;
+  background-color: #70ff98;
   padding-left: 30px;
 }
 
@@ -255,4 +303,10 @@ input {
 /* Add this to your CSS */
 .smooth-scroll {
   transition: scroll-behavior 0.5s ease-in-out;
+}
+
+.error {
+  position: relative;
+  top: -17px;
+  font-size: 13px;
 }

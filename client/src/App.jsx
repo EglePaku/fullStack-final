@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -97,6 +98,10 @@ const App = () => {
       <aside className="aside-wrap">
         <Formik
           initialValues={{ brand: "", model: "" }}
+          validationSchema={Yup.object().shape({ // Yup validation schema
+            brand: Yup.string().required("Privaloma"),
+            model: Yup.string().required("Privaloma"),
+          })}
           onSubmit={handleFormSubmit}
         >
           <Form className="custom-form">
@@ -104,7 +109,14 @@ const App = () => {
             <div className="form-wrap">
               <h1>Nori užduoti klausimą?</h1>
               <Field name="brand" placeholder="Tavo klausimas..." />
-              <Field name="model" placeholder="Aprašymas..." />
+              <ErrorMessage name="brand" component="div" className="error" /> {/* Display validation error */}
+              <Field
+                name="model"
+                as="textarea" // Use "as" prop to specify a textarea
+                placeholder="Aprašymas..."
+                className="custom-textarea" // Add a class name
+              />
+              <ErrorMessage name="model" component="div" className="error" /> {/* Display validation error */}
               <button className="btn" type="submit">
                 Užduoti naują klausimą
               </button>
@@ -139,7 +151,7 @@ const App = () => {
                       />
                       <span>{car.upvotes || 0}</span>
                     </div>
-                    <div className="cbutton">
+                    <div className="cbutton thumb">
                       <img
                         src="../src/assets/icons/hand-thumbs-down.svg"
                         onClick={() => handleDownvote(car._id)}
