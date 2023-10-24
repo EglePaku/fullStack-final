@@ -76,11 +76,30 @@ const App = () => {
                   <p>{car.model}</p>
                 </div>
                 <div className="user-actions">
-                  <div
-                    className="delete"
-                    onClick={() => handleDeleteCar(car._id)}
-                  >
-                    Ištrinti
+                  <div className="wrap-start">
+                    <div className="cbutton">
+                      <img src="../src/assets/icons/hand-thumbs-up.svg" />
+                    </div>
+                    <div className="cbutton">
+                      <img src="../src/assets/icons/hand-thumbs-down.svg" />
+                    </div>
+                  </div>
+                  <div className="wrap-end">
+                    <div className="cbutton">
+                      <img src="../src/assets/icons/pen.svg" />
+                      Redaguoti
+                    </div>
+                    <div
+                      className="cbutton"
+                      onClick={() => handleDeleteCar(car._id)}
+                    >
+                      <img src="../src/assets/icons/trash.svg" />
+                      Ištrinti
+                    </div>
+                    <div className="cbutton">
+                      <img src="../src/assets/icons/reply.svg" />
+                      Atsakyti
+                    </div>
                   </div>
                 </div>
               </div>

@@ -75,14 +75,15 @@ main {
   height: 100px;
   background-color: #fff;
   position: fixed;
-  padding: 20px 70px;
+  padding: 10px 70px;
   width: 100%;
   border-bottom: 1px #eee solid;
+  z-index: 9;
 }
 
 .content-wrap {
-  padding: 20px 70px;
-  margin-top: 170px;
+  padding: 10px 70px;
+  margin-top: 150px;
 }
 
 .list-item {
@@ -149,14 +150,22 @@ button {
 }
 
 
-.delete {
+.cbutton {
     font-weight: 700;
     cursor: pointer;
     display: inline-block;
     transition: ease-in-out .2s all;
+    display: flex;
+    font-size: 14px;
 }
 
-.delete:hover {
+.cbutton img {
+  margin-right: 5px;
+  position: relative;
+  top: -1px;
+}
+
+.cbutton:hover {
     opacity: .7;
 }
 
@@ -164,6 +173,23 @@ button {
     border-top: 1px solid #00000010;
     padding: 1rem 2rem;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+    justify-content: space-between;
+}
+
+.wrap-end {
+  display: flex;
+}
+
+.wrap-end .cbutton {
+  display: flex;
+  margin-left: 30px;
+
+}
+
+.wrap-start {
+  display: flex;
+}
+
+.wrap-start .cbutton {
+  margin-right: 5px;
 }
