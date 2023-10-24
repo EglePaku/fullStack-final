@@ -125,7 +125,7 @@ input {
   width: 100%;
   max-width: calc(100% - 2rem);
   margin-bottom: 1rem;
-  font-size: 1rem;
+  font-size: .9rem;
   border: none;
   font-family: "Wix Madefor Display", sans-serif;
   font-weight: 400;
@@ -194,6 +194,10 @@ input {
 
 .cbutton:hover {
   opacity: 0.7;
+}
+
+.cbutton.thumb {
+  width: 40px;
 }
 
 .user-actions {

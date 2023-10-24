@@ -38,6 +38,26 @@ const App = () => {
       });
   };
 
+  const handleUpvote = (carId) => {
+    const updatedCars = cars.map((car) => {
+      if (car._id === carId) {
+        return { ...car, upvotes: (car.upvotes || 0) + 1 };
+      }
+      return car;
+    });
+    setCars(updatedCars);
+  };
+
+  const handleDownvote = (carId) => {
+    const updatedCars = cars.map((car) => {
+      if (car._id === carId) {
+        return { ...car, downvotes: (car.downvotes || 0) + 1 };
+      }
+      return car;
+    });
+    setCars(updatedCars);
+  };
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -112,11 +132,19 @@ const App = () => {
                 {/* User action */}
                 <div className="user-actions">
                   <div className="wrap-start">
-                    <div className="cbutton">
-                      <img src="../src/assets/icons/hand-thumbs-up.svg" />
+                    <div className="cbutton thumb">
+                      <img
+                        src="../src/assets/icons/hand-thumbs-up.svg"
+                        onClick={() => handleUpvote(car._id)}
+                      />
+                      <span>{car.upvotes || 0}</span>
                     </div>
                     <div className="cbutton">
-                      <img src="../src/assets/icons/hand-thumbs-down.svg" />
+                      <img
+                        src="../src/assets/icons/hand-thumbs-down.svg"
+                        onClick={() => handleDownvote(car._id)}
+                      />
+                      <span>{car.downvotes || 0}</span>
                     </div>
                   </div>
                   <div className="wrap-end">
