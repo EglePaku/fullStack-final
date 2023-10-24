@@ -17,7 +17,6 @@ h1 {
 
 h2 {
   font-family: "DM Serif Display", serif;
-
   font-size: 2.1875rem;
 }
 
@@ -243,4 +242,9 @@ input {
 
 .Toastify__toast-progress-bar {
   background: #000;
+}
+
+/* Add this to your CSS */
+.smooth-scroll {
+  transition: scroll-behavior 0.5s ease-in-out;
 }

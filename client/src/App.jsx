@@ -38,6 +38,13 @@ const App = () => {
       });
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
   return (
     <div className="wrapper">
       <aside className="aside-wrap">
@@ -55,6 +62,9 @@ const App = () => {
                 toast.success("Įrašas sėkmingai pateiktas");
 
                 resetForm();
+
+                // Scroll to the top of the page with smooth animation
+                scrollToTop();
               })
               .catch((error) => {
                 console.error(error);
@@ -69,7 +79,9 @@ const App = () => {
               <h1>Nori užduoti klausimą?</h1>
               <Field name="brand" placeholder="Tavo klausimas..." />
               <Field name="model" placeholder="Aprašymas..." />
-              <button className="btn" type="submit">Užduoti naują klausimą</button>
+              <button className="btn" type="submit">
+                Užduoti naują klausimą
+              </button>
             </div>
             <span className="placeholder-invisible"></span>
           </Form>
@@ -88,7 +100,7 @@ const App = () => {
                   <h3>{car.brand}</h3>
                   <p>{car.model}</p>
                 </div>
-                {/* User actions */}
+                {/* User action */}
                 <div className="user-actions">
                   <div className="wrap-start">
                     <div className="cbutton">
